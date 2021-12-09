@@ -1,6 +1,7 @@
 import pyttsx3
 import datetime
 import speech_recognition
+import webbrowser
 
 AImouth = pyttsx3.init()
 voice = AImouth.getProperty('voices')
@@ -20,6 +21,7 @@ def listen():
         print("You: " + str(you))
     except:
         speak("I can't hear you, try again!")
+	return you
 
 def time():
     Time = datime.datime.now().strftime('%H:%M:%S %p') # %H: hour | %M: minute | %S: second %p: PM or AM
@@ -34,7 +36,25 @@ def welcome():
     if (hour >= 18) and (hour < 24):
         speak("Good Night")
     else:
-        speak("!!!"
+        speak("???")
+	speak("How can I help you?")
 
 if __name__=='__main__':
-    
+	welcome()
+	while True:
+		__q__ = listen().lower()
+		if "bye" in __q__:
+			speak("Good bye!")
+			break
+		if "Hello" in __q__:
+			speak("Hello there")
+		if "Google" in __q__:
+			speak("speak an input to I search!")
+			search=listen().lower()
+			url = f"https://www.google.com.vn/search?q={search}")
+			webbrowser.get().open(url)
+		if "YouTube" in __q__:
+			speak("speak an input to I search!")
+			search=listen().lower()
+			url = f"https://www.youtube/search?q={search}")
+			webbrowser.get().open(url)
